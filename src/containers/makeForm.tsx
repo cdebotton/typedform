@@ -2,6 +2,7 @@ import * as React from 'react';
 
 type Props<T> = {
   initialValue?: T;
+  children: (state: State<T>) => React.ReactElement<any>;
 };
 
 type State<T> = {
@@ -23,6 +24,10 @@ export function makeForm<T>(schema: new () => T) {
   return class extends React.Component<Props<T>, State<T>> {
     public constructor(props: Props<T>) {
       super(props);
+    }
+
+    public render() {
+      return this.props.children(this.state);
     }
   };
 }

@@ -12,8 +12,10 @@ describe('@field', () => {
     const keys = Reflect.getMetadataKeys(TestSchema);
     expect(keys).toContain('typedform:testField1');
     expect(keys).toContain('typedform:testField2');
+
     const value1 = Reflect.getMetadata('typedform:testField1', TestSchema);
     const value2 = Reflect.getMetadata('typedform:testField2', TestSchema);
+
     expect(typeof value1).toBe('string');
     expect(typeof value2).toBe('number');
   });
